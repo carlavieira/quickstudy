@@ -1,14 +1,14 @@
-import java.awt.Desktop;
+import org.simpleframework.http.Request;
+import org.simpleframework.http.Response;
+import org.simpleframework.http.core.Container;
+import org.simpleframework.http.core.ContainerSocketProcessor;
+
+import java.io.IOException;
 import java.io.PrintStream;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
-import java.net.URI;
 
-import org.simpleframework.http.Request;
-import org.simpleframework.http.Response;
 import org.simpleframework.http.Status;
-import org.simpleframework.http.core.Container;
-import org.simpleframework.http.core.ContainerSocketProcessor;
 import org.simpleframework.transport.connect.Connection;
 import org.simpleframework.transport.connect.SocketConnection;
 
@@ -17,32 +17,35 @@ import com.google.gson.JsonObject;
 
 public class HTTPServer implements Container {
 
-	private static Conta conta = new Conta();
-	private static ContaService contaServ = new ContaService();
-	private static CursoService proServ = new CursoService();
-	private static TurmaService proServ1 = new TurmaService();
-	
+	private static Professor prof = new Professor();
+	private static Curso curso = new Curso();
+	private static ProfessorService profServ = new ProfessorService();
+	private static CursoService cursoServ = new CursoService();
+
+
+	@Override
 	public void handle(Request request, Response response) {
-		
 		try {
-			PrintStream body = response.getPrintStream();
-			
+			// Recupera a URL e o método utilizado.
+
 			String path = request.getPath().getPath();
 
-			if(path.startsWith("/verificarConta")) {
-				JsonObject obj = contaServ.validaConta(request, conta);
+			if(path.startsWith("/cadastraProfessor")) {
+				JsonObject obj = profServ.adiciona(request, prof);
 				this.enviaResposta(Status.CREATED, response, obj.toString());
 			}
-			else if(path.startsWith("/adicionaProduto")) {
-				JsonObject obj = proServ.adiciona(request, new Curso());
+			else if(path.startsWith("/adicionaCurso")) {
+				JsonObject obj = cursoServ.adiciona(request, curso);
 				this.enviaResposta(Status.CREATED, response, obj.toString());
 			}
 
-		} catch (Exception e) {
+
+		}catch(Exception e){
 			e.printStackTrace();
 		}
+
 	}
-	
+
 	private void enviaResposta(Status status, Response response, String str) throws Exception {
 
 
@@ -61,9 +64,9 @@ public class HTTPServer implements Container {
 		body.close();
 	}
 
-	public static void main(String[] list) throws Exception {
-		
-		int porta = 880;
+	public static void main(String[] args) throws IOException {
+
+		int porta = 7200;
 
 		// Configura uma conexão soquete para o servidor HTTP.
 		Container container = new HTTPServer();
@@ -71,9 +74,6 @@ public class HTTPServer implements Container {
 		Connection conexao = new SocketConnection(servidor);
 		SocketAddress endereco = new InetSocketAddress(porta);
 		conexao.connect(endereco);
-		
-		//Testa a conexão abrindo o navegador padrão.
-		Desktop.getDesktop().browse(new URI("http://127.0.0.1:" + porta));
 
 		System.out.println("Tecle ENTER para interromper o servidor...");
 		System.in.read();
@@ -82,4 +82,5 @@ public class HTTPServer implements Container {
 		servidor.stop();
 
 	}
+
 }

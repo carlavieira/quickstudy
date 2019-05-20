@@ -1,7 +1,9 @@
+
 import org.simpleframework.http.Query;
 import org.simpleframework.http.Request;
 
 import com.google.gson.JsonObject;
+
 
 public class CursoService {
 
@@ -13,14 +15,12 @@ public class CursoService {
 		
 		try {
 			curso.setNome(query.get("nome"));
-			curso.setDescrição(query.get("descricao"));
-			curso.setDisponivel(query.getBoolean("disponivel"));
+			curso.setCategoria(query.get("categoria"));
+			curso.setDescrição(query.get("descrição"));
 			cursosDao.add(curso);
-			obj.addProperty("status", 1);
 			obj.addProperty("message", "Curso adicionado com sucesso");
 			
 		}catch(Exception e) {
-			obj.addProperty("status", 0);
 			obj.addProperty("message", e.getMessage());
 			obj.addProperty("stackTrace", e.getStackTrace().toString());
 			obj.addProperty("type", e.getClass().toGenericString());

@@ -1,4 +1,3 @@
-
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -6,7 +5,8 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TurmaDAO implements DAO<Turma, String> {
+
+public class TurmaDAO implements DAO<Turma, Integer> {
 
 	private String arquivoNome = NomeDosArquivos.ARQUIVO_TURMAS;
 
@@ -15,21 +15,26 @@ public class TurmaDAO implements DAO<Turma, String> {
 	}
 
 	@Override
-	public Turma get(String chave) {
+	public Turma get(Integer chave) {
 
 		Turma atual = null;
 		Turma retorno = null;
-		String chaveAtual = null;
+		Integer chaveAtual = null;
 
 		try(DataInputStream entrada = new DataInputStream(new FileInputStream(arquivoNome))){
 
-			while((chaveAtual = entrada.readUTF()) != null) {
+			while((chaveAtual = entrada.readInt()) != null) {
 				atual = new Turma();
-				atual.setNome(chaveAtual);
-				atual.setDescricao(entrada.readUTF());
-				atual.setDisponivel(entrada.readBoolean());
+				atual.setIdTurma(chaveAtual);
+				atual.setQtdAlunos(entrada.readInt());
+				atual.setData_fim(entrada.readUTF());
+				atual.setData_inicio(entrada.readUTF());
+				atual.setDuracao(entrada.readInt());
+				atual.setIdCurso(entrada.readInt());
+				atual.setPreco(entrada.readDouble());
+				atual.setQtdAlunos(entrada.read());
 				
-				if(chave == chaveAtual) {
+				if(chave.equals(atual.getIdTurma())) {
 					retorno = atual;
 					break;
 				}
@@ -47,9 +52,14 @@ public class TurmaDAO implements DAO<Turma, String> {
 	public void add(Turma item) {
 		
 		try(DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, true))){
-			saida.writeUTF(item.getNome());
-			saida.writeUTF(item.getDescricao());
-			saida.writeBoolean(item.isDisponivel());
+			saida.writeInt(item.getIdTurma());
+			saida.writeInt(item.getQtdAlunos());
+			saida.writeUTF(item.getData_fim());
+			saida.writeUTF(item.getData_inicio());
+			saida.writeInt(item.getDuracao());
+			saida.writeInt(item.getIdCurso());
+			saida.writeDouble(item.getPreco());
+			saida.writeInt(item.getQtdAlunos());
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -88,17 +98,20 @@ public class TurmaDAO implements DAO<Turma, String> {
 	public List<Turma> getAll() {
 		
 		List<Turma> retorno = new ArrayList<Turma>();
-		String chaveAtual = null;
+		Integer chaveAtual = null;
 		Turma atual = new Turma();
 		
 		try(DataInputStream entrada = new DataInputStream(new FileInputStream(arquivoNome))){
 			
-			while((chaveAtual = entrada.readUTF()) != null) {
-				
-				atual.setNome(chaveAtual);
-				atual.setDescricao(entrada.readUTF());
-				atual.setDisponivel(entrada.readBoolean());
-				
+			while((chaveAtual = entrada.readInt()) != null) {
+				atual.setIdTurma(chaveAtual);
+				atual.setQtdAlunos(entrada.readInt());
+				atual.setData_fim(entrada.readUTF());
+				atual.setData_inicio(entrada.readUTF());
+				atual.setDuracao(entrada.readInt());
+				atual.setIdCurso(entrada.readInt());
+				atual.setPreco(entrada.readDouble());
+				atual.setQtdAlunos(entrada.read());
 				retorno.add(atual);
 			}
 			
@@ -114,9 +127,14 @@ public class TurmaDAO implements DAO<Turma, String> {
 		try(DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, false))){
 
 			for(Turma atual : turmas) {
-				saida.writeUTF(atual.getNome());
-				saida.writeUTF(atual.getDescricao());
-				saida.writeBoolean(atual.isDisponivel());
+				saida.writeInt(atual.getIdTurma());
+				saida.writeInt(atual.getQtdAlunos());
+				saida.writeUTF(atual.getData_fim());
+				saida.writeUTF(atual.getData_inicio());
+				saida.writeInt(atual.getDuracao());
+				saida.writeInt(atual.getIdCurso());
+				saida.writeDouble(atual.getPreco());
+				saida.writeInt(atual.getQtdAlunos());
 				saida.flush();
 
 			}

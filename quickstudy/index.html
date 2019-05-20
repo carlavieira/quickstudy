@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/functions.js"></script>
 
     <title>QuickStudy</title>
 <!--
@@ -26,33 +27,6 @@ QuickStudy - TIS II
         <div class="container">
             <div class="row">
                 <div class="tm-left-right-container">
-                    <!-- Left column: logo and menu -->
-                    <div class="tm-blue-bg tm-left-column">                        
-                        <div class="tm-logo-div text-xs-center">
-                            <h1 class="tm-site-name">QuickStudy</h1>
-                        </div>
-                        <nav class="tm-main-nav">
-                            <ul class="tm-main-nav-ul">
-                                <li class="tm-nav-item">
-                                    <a href="./meuperfil.html" class="tm-nav-item-link">Meu Perfil</a>
-                                </li>
-                                <li class="tm-nav-item">
-                                    <a href="./meuscursos.html" class="tm-nav-item-link">Meus Cursos</a>
-                                </li>
-                                <li class="tm-nav-item">
-                                    <a href="./minhasturmas.html" class="tm-nav-item-link">Minhas Turmas</a>
-                                </li>
-                                <li class="tm-nav-item">
-                                    <a href=".configuracoes.html" class="tm-nav-item-link">Configurações</a>
-                                </li>
-                                <li class="tm-nav-item">
-                                    <a href="./contato.html" class="tm-nav-item-link">Entre em contato</a>
-                                </li>
-                            </ul>
-                        </nav>                                         
-                    </div> <!-- Left column: logo and menu -->
-                    
-                    <!-- Right column: content -->
                     <div class="tm-right-column">
 
                         <div class="tm-content-div">
@@ -61,7 +35,28 @@ QuickStudy - TIS II
                                 <header>
                                     <h2 class="tm-blue-text tm-welcome-title tm-margin-b-45">Bem-vindo ao QuickStudy</h2>
                                 </header>
-                                <p>A maneira mais fácil de formar turmas dos mais diversos cursos</p>
+                                <p>Cadastre-se como professor:</p>
+
+                                <div class="col-lg-6">
+                                    <form action="#professor" method="post" class="professor-form">
+                                        <div class="form-group">
+                                            <input type="text" id="professor_name" name="professor_nome" class="form-control" placeholder="Nome"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" id="professor_email" name="professor_email" class="form-control" placeholder="Email"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="professor_cpf" name="professor_cpf" class="form-control" placeholder="CPF"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="professor_password" name="professor_password" class="form-control" placeholder="Senha"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea id="text" name="professor_message" class="form-control"  placeholder="Formação" required></textarea>
+                                        </div>                                            
+                                        <button onclick="submitNovoProfessor()" type="submit" class="float-right tm-button">Cadastrar</button>
+                                    </form>    
+                                </div>
                             </section>
                         
                     </div> <!-- Right column: content -->

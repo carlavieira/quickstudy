@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/functions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <title>QuickStudy</title>
 <!--
@@ -38,7 +39,7 @@ QuickStudy - TIS II
                                 <p>Cadastre-se como professor:</p>
 
                                 <div class="col-lg-6">
-                                    <form action="#professor" method="post" class="professor-form">
+                                    <form action="javascript:void(0)" method="post" class="professor-form">
                                         <div class="form-group">
                                             <input type="text" id="professor_name" name="professor_nome" class="form-control" placeholder="Nome"  required/>
                                         </div>
@@ -54,7 +55,7 @@ QuickStudy - TIS II
                                         <div class="form-group">
                                             <textarea id="text" name="professor_message" class="form-control"  placeholder="Formação" required></textarea>
                                         </div>                                            
-                                        <button onclick="submitNovoProfessor()" type="submit" class="float-right tm-button">Cadastrar</button>
+                                        <button onclick="cadastrarNovoProfessor()" type="submit" class="float-right tm-button">Cadastrar</button>
                                     </form>    
                                 </div>
                             </section>

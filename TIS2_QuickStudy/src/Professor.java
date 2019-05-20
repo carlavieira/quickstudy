@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  */
 public class Professor {
-	private int idProfessor;
+	private static int idProfessor = 0;
 	private String email;
 	private String senha;
 	private String cpf;
@@ -23,6 +23,10 @@ public class Professor {
 	 *
 	 */
 	public Professor() {
+		//this.setIdProfessor(6);
+		this.numDeCursos=0;
+		this.cursos.clear();
+		idProfessor++;
 	}
 
 	/**
@@ -93,8 +97,9 @@ public class Professor {
 	 * Para criar um novo ID de Professor, é utilizado o método de gerador de ID com o tamanho indicado.
 	 * @param tamanho
 	 */
-	public void setIdProfessor(int tamanho) {
-		this.idProfessor = Integer.parseInt(gerarIdProfessor(tamanho));
+	public void setIdProfessor(int idProfessor) {
+		this.idProfessor = idProfessor;
+//		this.idProfessor = Integer.parseInt(gerarIdProfessor(tamanho));
 	}
 
 	public String getFormacao() {
@@ -131,3 +136,4 @@ public class Professor {
 	
 
 }
+

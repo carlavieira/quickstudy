@@ -1,4 +1,5 @@
-function submitNovoProfessor() {
+function cadastrarNovoProfessor() {
+    
     $.ajax({
         url: 'http://127.0.0.1:7200/cadastraProfessor',
         type: 'POST',
@@ -10,8 +11,8 @@ function submitNovoProfessor() {
             formacao: $('#formacao').val(),
         }),
         success: function (response) {
-            window.location.replace("./meuperfil.html")
             console.log(response.message);
+            window.location.href="meuperfil.html"
         },
         error: function (event) {
             msgError(event);
@@ -28,8 +29,8 @@ function submitNovoCurso() {
             descrição: $('#descrição').val(),
         }),
         success: function (response) {
-            window.location.replace("./meuscursos.html")
             console.log(response.message);
+            window.location.href="meuscursos.html"
         },
         error: function (event) {
             msgError(event);

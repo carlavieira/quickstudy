@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *
  */
 public class Professor {
-	private static int idProfessor = 0;
+	private int idProfessor;
 	private String email;
 	private String senha;
 	private String cpf;
@@ -23,14 +23,12 @@ public class Professor {
 	 *
 	 */
 	public Professor() {
-		//this.setIdProfessor(6);
-		this.numDeCursos=0;
-		this.cursos.clear();
-		idProfessor++;
 	}
 
 	/**
-	 * Construtor da classe Professos com atributos dados (sem cursos). Gera ID com 6 dígitos.
+	 * Construtor da classe Professos com atributos dados (sem cursos). Gera ID com
+	 * 6 dígitos.
+	 * 
 	 * @param senha
 	 * @param cpf
 	 * @param nome
@@ -44,7 +42,7 @@ public class Professor {
 		this.setNome(nome);
 		this.setEmail(email);
 		this.setFormacao(formacao);
-		this.numDeCursos=0;
+		this.numDeCursos = 0;
 		this.cursos.clear();
 	}
 
@@ -52,7 +50,7 @@ public class Professor {
 	 * Gera uma ID para o professor com o tamanho desejado.
 	 * 
 	 * @param len (número de dígitos desejados)
-	 * @return id 
+	 * @return id
 	 */
 	private String gerarIdProfessor(int len) {
 		String[] caracteres = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
@@ -94,12 +92,13 @@ public class Professor {
 	}
 
 	/**
-	 * Para criar um novo ID de Professor, é utilizado o método de gerador de ID com o tamanho indicado.
+	 * Para criar um novo ID de Professor, é utilizado o método de gerador de ID com
+	 * o tamanho indicado.
+	 * 
 	 * @param tamanho
 	 */
-	public void setIdProfessor(int idProfessor) {
-		this.idProfessor = idProfessor;
-//		this.idProfessor = Integer.parseInt(gerarIdProfessor(tamanho));
+	public void setIdProfessor(int tamanho) {
+		this.idProfessor = Integer.parseInt(gerarIdProfessor(tamanho));
 	}
 
 	public String getFormacao() {
@@ -133,7 +132,5 @@ public class Professor {
 	public void setNumDeCursos(int numDeCursos) {
 		this.numDeCursos = numDeCursos;
 	}
-	
 
 }
-

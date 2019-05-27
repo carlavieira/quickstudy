@@ -1,10 +1,10 @@
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ProfessorDAO implements DAO<Professor, Integer> {
 
@@ -57,16 +57,8 @@ public class ProfessorDAO implements DAO<Professor, Integer> {
 
 	@Override
 	public void add(Professor item) {
-		
-		try(DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, true))){
-//			saida.writeInt(01);
-//			saida.writeUTF("01");
-//			saida.writeUTF("123");
-//			saida.writeUTF("1111111");
-//			saida.writeUTF("Luis");
-//			saida.writeUTF("Engenheiro de Software");
-//			saida.writeInt(4);
-			
+
+		try (DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, true))) {
 			saida.writeInt(item.getIdProfessor());
 			saida.writeUTF(item.getEmail());
 			saida.writeUTF(item.getSenha());
@@ -74,12 +66,11 @@ public class ProfessorDAO implements DAO<Professor, Integer> {
 			saida.writeUTF(item.getNome());
 			saida.writeUTF(item.getFormacao());
 			saida.writeInt(item.getCursos().size());
-			
 			for (Curso p : item.getCursos()) {
 				saida.writeInt(p.getIdCurso());
 			}
-			
-		}catch(Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -87,43 +78,43 @@ public class ProfessorDAO implements DAO<Professor, Integer> {
 
 	@Override
 	public void update(Professor item) {
-		
+
 		List<Professor> lista = this.getAll();
-		
+
 		int index = lista.indexOf(item);
-		
-		if(index != -1)
+
+		if (index != -1)
 			lista.set(index, item);
-		
+
 		this.saveToFile(lista);
-		
+
 	}
 
 	@Override
 	public void delete(Professor item) {
-		
+
 		List<Professor> lista = this.getAll();
-		
+
 		int index = lista.indexOf(item);
-		
-		if(index != -1)
+
+		if (index != -1)
 			lista.remove(index);
-		
-			this.saveToFile(lista);
+
+		this.saveToFile(lista);
 
 	}
 
 	@Override
 	public List<Professor> getAll() {
-		
+
 		List<Professor> retorno = new ArrayList<Professor>();
 		Integer chaveAtual = null;
 		Professor atual = new Professor();
-		
-		try(DataInputStream entrada = new DataInputStream(new FileInputStream(arquivoNome))){
-			
-			while((chaveAtual = entrada.readInt()) != null) {
-				
+
+		try (DataInputStream entrada = new DataInputStream(new FileInputStream(arquivoNome))) {
+
+			while ((chaveAtual = entrada.readInt()) != null) {
+
 				atual.setIdProfessor(chaveAtual);
 				atual.setEmail(entrada.readUTF());
 				atual.setSenha(entrada.readUTF());
@@ -138,22 +129,22 @@ public class ProfessorDAO implements DAO<Professor, Integer> {
 					cursos.add(cursoDAO.get(curso));
 				}
 				atual.setCursos(cursos);
-				
+
 				retorno.add(atual);
 			}
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return retorno;
 	}
 
-	private void saveToFile(List <Professor> professores) {
+	private void saveToFile(List<Professor> professores) {
 
-		try(DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, false))){
+		try (DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, false))) {
 
-			for(Professor atual : professores) {
+			for (Professor atual : professores) {
 
 				saida.writeInt(atual.getIdProfessor());
 				saida.writeUTF(atual.getEmail());
@@ -169,10 +160,9 @@ public class ProfessorDAO implements DAO<Professor, Integer> {
 
 			}
 
-		}catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 
 	}
 

@@ -1,3 +1,4 @@
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
@@ -35,7 +36,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 					turmas.add(turmaDAO.get(turma));
 				}
 				atual.setTurmas(turmas);
-				
+
 				atual.setNome(entrada.readUTF());
 				atual.setCategoria(entrada.readUTF());
 				atual.setDescrição(entrada.readUTF());
@@ -69,7 +70,6 @@ public class CursoDAO implements DAO<Curso, Integer> {
 			saida.writeUTF(atual.getCategoria());
 			saida.writeUTF(atual.getDescrição());
 			saida.writeInt(atual.getIdProfessor());
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -125,7 +125,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 					turmas.add(turmaDAO.get(turma));
 				}
 				atual.setTurmas(turmas);
-				
+
 				atual.setNome(entrada.readUTF());
 				atual.setCategoria(entrada.readUTF());
 				atual.setDescrição(entrada.readUTF());
@@ -156,8 +156,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 				saida.writeUTF(atual.getCategoria());
 				saida.writeUTF(atual.getDescrição());
 				saida.writeInt(atual.getIdProfessor());
-				
-				
+
 				saida.flush();
 
 			}

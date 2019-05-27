@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- * A classe Curso contém os dados dos cursos que um professor do QuickStudy disponibilizou na plataforma
+ * A classe Curso contém os dados dos cursos que um professor do QuickStudy
+ * disponibilizou na plataforma
  * 
  * @author carlavieira
  * @version 1.0
@@ -13,11 +15,12 @@ public class Curso {
 	private String nome;
 	private String categoria;
 	private String descrição;
-	private ArrayList<Turma> turmas = new ArrayList<Turma>();
+	private List<Turma> turmas = new ArrayList<Turma>();
 	private int idProfessor;
-	
+
 	/**
 	 * Construtor para curso com atributos
+	 * 
 	 * @param nome
 	 * @param categoria
 	 * @param descrição
@@ -30,27 +33,26 @@ public class Curso {
 		this.turmas.clear();
 		this.numDeTurmas = 0;
 	}
-	
+
 	/**
 	 * Gera ID para o curso com tamanho dado.
+	 * 
 	 * @param len
 	 * @return ID (em String)
 	 */
 	private String gerarIdCurso(int len) {
-	    String[] caracteres ={"0","1","2","3","4","5","6","7","8","9"};
-	    String id="";
+		String[] caracteres = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+		String id = "";
 
-	    for (int x=0; x<len; x++){
-	        int j = (int) (Math.random()*caracteres.length);
-	        id += caracteres[j];
-	    }
-	    return id;
+		for (int x = 0; x < len; x++) {
+			int j = (int) (Math.random() * caracteres.length);
+			id += caracteres[j];
+		}
+		return id;
 	}
-	
+
 	public Curso() {
-		this.turmas.clear();
-		this.numDeTurmas = 0;
-		
+
 	}
 
 	public String getNome() {
@@ -76,8 +78,8 @@ public class Curso {
 	public void setDescrição(String descrição) {
 		this.descrição = descrição;
 	}
-	
-	public ArrayList<Turma> getTurmas() {
+
+	public List<Turma> getTurmas() {
 		return turmas;
 	}
 
@@ -88,8 +90,11 @@ public class Curso {
 	public int getIdCurso() {
 		return idCurso;
 	}
+
 	/**
-	 * Para criar um novo ID do Curso, é utilizado o método de gerador de ID com o tamanho indicado.
+	 * Para criar um novo ID do Curso, é utilizado o método de gerador de ID com o
+	 * tamanho indicado.
+	 * 
 	 * @param digitosId
 	 */
 	public void setIdCurso(int digitosId) {
@@ -111,8 +116,5 @@ public class Curso {
 	public void setNumDeTurmas(int numDeTurmas) {
 		this.numDeTurmas = numDeTurmas;
 	}
-	
-	
-	
-	
+
 }

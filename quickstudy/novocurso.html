@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/functions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
     <title>Novo Curso</title>
 <!--
@@ -57,22 +59,22 @@ QuickStudy - TIS II
 
                         <div class="tm-content-div">
                             <!-- Welcome section -->
-                            <section id="contact" class="tm-section">
+                            <section id="curso" class="tm-section">
                                 <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Novo Curso</h2></header>
 
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <form action="#contact" method="post" class="contact-form">
+                                        <form action="#curso" method="post" class="contact-form">
                                             <div class="form-group">
-                                                <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Nome do Curso"  required/>
+                                                <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome do Curso"  required/>
                                             </div>
                                             <div class="form-group">
-                                                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Cartegoria"  required/>
+                                                <input type="text" id="categoria" name="categoria" class="form-control" placeholder="Cartegoria"  required/>
                                             </div>
                                             <div class="form-group">
-                                                <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Descrição" required></textarea>
+                                                <textarea id="descricao" name="descricao" class="form-control" rows="9" placeholder="Descrição" required></textarea>
                                             </div>                                            
-                                            <button type="submit" class="float-right tm-button">Salvar Novo Curso</button>
+                                            <button onclick="submitNovoCurso()" type="submit" class="float-right tm-button">Salvar Novo Curso</button>
                                         </form>    
                                     </div>
                                     

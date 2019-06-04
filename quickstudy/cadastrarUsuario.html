@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="css/magnific-popup.css">                                <!-- Magnific pop up style, http://dimsemenov.com/plugins/magnific-popup/ -->
     <link rel="stylesheet" href="css/templatemo-style.css">                                   <!-- Templatemo style -->
 
+
 </head>
     <body>        
         <div class="container">
@@ -22,11 +24,12 @@
                     <div class="tm-right-column">
 
                         <div class="tm-content-div">
+
                             <section id="welcome" class="tm-section">
                                 <header>
                                     <h2 class="tm-blue-text tm-welcome-title tm-margin-b-45">Bem-vindo ao QuickStudy</h2>
                                 </header>
-                                <p>Faça o seu login:</p>
+                                <p>Cadastre-se:</p>
 
                                 <div class="col-lg-6">
                                     <form action="javascript:void(0)" method="post" class="professor-form">
@@ -35,12 +38,21 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="text" id="senha" name="senha" class="form-control" placeholder="Senha"  required/>
-                                        </div>                                          
-                                        <button onclick="fazerLogin()" type="submit" class="float-right tm-button">Login</button>
-                                    </form>   
-                                    <div>
-                                        <a href="cadastrarUsuario.html" class="tm-nav-item-link">Ainda não possui uma conta? Cadastre-se agora!</a>
-                                    </div> 
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="email" name="email" class="form-control" placeholder="Email"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="cpf" name="cpf" class="form-control" placeholder="CPF"  required/>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea id="text" name="formacao" class="form-control"  placeholder="Formação" required></textarea>
+                                        </div>                                            
+                                        <button onclick="cadastrarNovoUsuario()" type="submit" class="float-right tm-button">Cadastrar</button>
+                                    </form>    
                                 </div>
                             </section>
                         

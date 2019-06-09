@@ -11,7 +11,7 @@ class TurmaDAOTest {
 
 	@Test
 	void testAddEGet() {
-		Turma turma1 = new Turma("04/06/2019", "05/06/2019", 3, 50.00, 2, 6);
+		Turma turma1 = new Turma(123455, "04/06/2019", "05/06/2019", 3, 50.00, 2, 6);
 		TurmaDAO testeDAO = new TurmaDAO();
 
 		testeDAO.add(turma1);
@@ -19,7 +19,7 @@ class TurmaDAOTest {
 		Integer id = turma1.getIdTurma();
 
 		turma1 = testeDAO.get(id);
-
+	
 		assertEquals("04/06/2019", turma1.getData_inicio(), "O get não retornou a data de inicio correta.");
 		assertEquals("05/06/2019", turma1.getData_fim(), "O get não retornou a data de fim correta.");
 		assertEquals(3, turma1.getDuracao(), "O get não retornou a duração correta.");
@@ -31,7 +31,7 @@ class TurmaDAOTest {
 	@Test
 	void testUpdate() {
 
-		Turma turma1 = new Turma("04/06/2019", "05/06/2019", 3, 50.00, 2, 6);
+		Turma turma1 = new Turma(123456, "04/06/2019", "05/06/2019", 3, 50.00, 2, 6);
 		TurmaDAO testeDAO = new TurmaDAO();
 		testeDAO.add(turma1);
 		turma1.setDuracao(4);
@@ -48,8 +48,8 @@ class TurmaDAOTest {
 	@Test
 	void testDeleteEGetAll() {
 
-		Turma turma1 = new Turma("04/06/2019", "05/06/2019", 3, 50.00, 2, 6);
-		Turma turma2 = new Turma("10/06/2019", "16/06/2019", 7, 100.00, 2, 6);
+		Turma turma1 = new Turma(123457, "04/06/2019", "05/06/2019", 3, 50.00, 2, 6);
+		Turma turma2 = new Turma(123458, "10/06/2019", "16/06/2019", 7, 100.00, 2, 6);
 		TurmaDAO testeDAO = new TurmaDAO();
 
 		testeDAO.add(turma1);

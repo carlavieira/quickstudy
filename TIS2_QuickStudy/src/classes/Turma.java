@@ -12,9 +12,10 @@ import java.util.List;
  * @version 1.0
  *
  */
-public class Turma {
+public class Turma implements Comparable<Turma>{
 	
 	private int idTurma;
+	private int idCurso;
 	private String data_inicio;
 	private String data_fim;
 	private int duracao;
@@ -24,8 +25,9 @@ public class Turma {
 	private List<Usuario> alunos;
 	
 	
-	public Turma(String inicio,String fim,int duracao, double preco, int qtdMinAlunos, int qtdMaxAlunos){
+	public Turma(int idCurso, String inicio,String fim,int duracao, double preco, int qtdMinAlunos, int qtdMaxAlunos){
 		this.geraIdTurma(6);
+		this.idCurso = idCurso;
 		this.data_inicio = inicio;
 		this.data_fim = fim;
 		this.duracao = duracao;
@@ -67,6 +69,14 @@ public class Turma {
 	 */
 	public void geraIdTurma(int tamanho) {
 		this.idTurma = Integer.parseInt(gerarId(tamanho));
+	}
+
+	public int getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(int idCurso) {
+		this.idCurso = idCurso;
 	}
 
 	public String getData_inicio() {
@@ -138,13 +148,18 @@ public class Turma {
 	}
 	@Override
 	public String toString() {
-		return "[ ID: "+this.idTurma+", duração: "+this.duracao+"]";
+		return "[ ID: "+this.idTurma+", início:"+this.data_inicio+", fim: "+this.data_fim+", duração: "+this.duracao+", preço: "+this.preco+"]";
 	}
 	
 	@Override
 	public boolean equals(Object obj) {
 		Turma turma = (Turma)obj;
 		return (this.getIdTurma() == turma.getIdTurma());
+	}
+
+	@Override
+	public int compareTo(Turma outraTurma) {
+		return ((Integer)this.idTurma).compareTo(outraTurma.getIdTurma());
 	}
 	
 }

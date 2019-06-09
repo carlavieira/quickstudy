@@ -3,7 +3,7 @@ package classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Comparable<Usuario>{
 
 	private int idUsuario;
 	private String usuario;
@@ -155,7 +155,12 @@ public class Usuario {
 	@Override
 	public boolean equals(Object obj) {
 		Usuario usuario = (Usuario) obj;
-		return (this.idUsuario ==  usuario.idUsuario);
+		return ((Integer)this.idUsuario).equals(usuario.getIdUsuario());
+	}
+
+	@Override
+	public int compareTo(Usuario o) {
+		return ((Integer)this.idUsuario).compareTo(o.getIdUsuario());
 	}
 	
 }

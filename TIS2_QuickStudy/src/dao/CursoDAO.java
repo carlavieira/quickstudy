@@ -31,6 +31,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 			while ((chaveAtual = entrada.readInt()) != null) {
 				atual = new Curso();
 				atual.setIdCurso(chaveAtual);
+				atual.setIdDono(entrada.readInt());
 				atual.setNome(entrada.readUTF());
 				atual.setCategoria(entrada.readUTF());
 				atual.setDescricao(entrada.readUTF());
@@ -56,6 +57,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 
 		try (DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, true))) {
 			saida.writeInt(atual.getIdCurso());
+			saida.writeInt(atual.getIdDono());
 			saida.writeUTF(atual.getNome());
 			saida.writeUTF(atual.getCategoria());
 			saida.writeUTF(atual.getDescricao());
@@ -107,6 +109,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 				Curso atual = new Curso();
 
 				atual.setIdCurso(chaveAtual);
+				atual.setIdDono(entrada.readInt());
 				atual.setNome(entrada.readUTF());
 				atual.setCategoria(entrada.readUTF());
 				atual.setDescricao(entrada.readUTF());
@@ -131,6 +134,7 @@ public class CursoDAO implements DAO<Curso, Integer> {
 
 			for (Curso atual : cursos) {
 				saida.writeInt(atual.getIdCurso());
+				saida.writeInt(atual.getIdDono());
 				saida.writeUTF(atual.getNome());
 				saida.writeUTF(atual.getCategoria());
 				saida.writeUTF(atual.getDescricao());

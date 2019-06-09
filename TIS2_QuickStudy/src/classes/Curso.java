@@ -12,9 +12,10 @@ import java.util.List;
  * @version 1.0
  *
  */
-public class Curso {
+public class Curso implements Comparable<Curso>{
 	
 	private int idCurso;
+	private int idDono;
 	private String nome;
 	private String categoria;
 	private String descricao;
@@ -27,8 +28,9 @@ public class Curso {
 	 * @param categoria
 	 * @param descrição
 	 */
-	public Curso(String nome, String categoria, String descricao) {
+	public Curso(int idDono, String nome, String categoria, String descricao) {
 		this.gerarIdCurso(6);
+		this.idDono = idDono;
 		this.nome = nome;
 		this.categoria = categoria;
 		this.descricao = descricao;
@@ -67,6 +69,14 @@ public class Curso {
 	 */
 	public void gerarIdCurso(int tamanho) {
 		this.idCurso = Integer.parseInt(gerarId(tamanho));
+	}
+
+	public int getIdDono() {
+		return idDono;
+	}
+
+	public void setIdDono(int idDono) {
+		this.idDono = idDono;
 	}
 
 	public String getNome() {
@@ -132,5 +142,10 @@ public class Curso {
 	public boolean equals(Object obj) {
 		Curso curso = (Curso) obj;
 		return (this.idCurso == curso.idCurso);
+	}
+
+	@Override
+	public int compareTo(Curso outroCurso) {
+		return ((Integer)this.idCurso).compareTo(outroCurso.getIdCurso());
 	}
 }

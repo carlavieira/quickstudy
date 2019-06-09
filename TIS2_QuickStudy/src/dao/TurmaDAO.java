@@ -32,6 +32,7 @@ public class TurmaDAO implements DAO<Turma, Integer> {
 			while ((chaveAtual = entrada.readInt()) != null) {
 				atual = new Turma();
 				atual.setIdTurma(chaveAtual);
+				atual.setIdCurso(entrada.readInt());
 				atual.setData_inicio(entrada.readUTF());
 				atual.setData_fim(entrada.readUTF());
 				atual.setDuracao(entrada.readInt());
@@ -60,6 +61,7 @@ public class TurmaDAO implements DAO<Turma, Integer> {
 
 		try (DataOutputStream saida = new DataOutputStream(new FileOutputStream(arquivoNome, true))) {
 			saida.writeInt(item.getIdTurma());
+			saida.writeInt(item.getIdCurso());
 			saida.writeUTF(item.getData_inicio());
 			saida.writeUTF(item.getData_fim());
 			saida.writeInt(item.getDuracao());
@@ -80,7 +82,6 @@ public class TurmaDAO implements DAO<Turma, Integer> {
 		List<Turma> lista = this.getAll();
 		
 		int index = lista.indexOf(item);
-		System.out.println(index);
 		if (index != -1)
 			lista.set(index, item);
 
@@ -115,6 +116,7 @@ public class TurmaDAO implements DAO<Turma, Integer> {
 				Turma atual = new Turma();
 				
 				atual.setIdTurma(chaveAtual);
+				atual.setIdCurso(entrada.readInt());
 				atual.setData_inicio(entrada.readUTF());
 				atual.setData_fim(entrada.readUTF());
 				atual.setDuracao(entrada.readInt());
@@ -140,6 +142,7 @@ public class TurmaDAO implements DAO<Turma, Integer> {
 
 			for (Turma item : turmas) {
 				saida.writeInt(item.getIdTurma());
+				saida.writeInt(item.getIdCurso());
 				saida.writeUTF(item.getData_inicio());
 				saida.writeUTF(item.getData_fim());
 				saida.writeInt(item.getDuracao());

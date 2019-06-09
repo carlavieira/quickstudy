@@ -1,0 +1,1 @@
+let localController = new LocalController("form-user-create", "form-user-update", "table-users");
